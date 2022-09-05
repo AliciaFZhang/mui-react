@@ -12,6 +12,15 @@ import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { orange, green} from '@mui/material/colors';
 import 'fontsource-roboto';
 import { Typography } from '@mui/material';
+import Container from '@mui/material/Container';
+
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const ButtonStyled = styled(Button)({
     background: 'linear-gradient(45deg, #FE6B8B, #FF8E53)',
@@ -24,6 +33,12 @@ const ButtonStyled = styled(Button)({
 
 //change the primary and secondary color
 const theme = createTheme({
+  typography: {
+    h2: {
+      fontSize: 24,
+      marginBottom: 0,
+    }
+  },
   palette: {
     primary: {
       main: orange[500],
@@ -57,9 +72,42 @@ function CheckboxExample() {
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <Container maxWidth="md">
       <div className="App">
         <header className="App-header">
-        <ButtonStyled>Test Styled Button</ButtonStyled>
+          <AppBar color="secondary">
+            <Toolbar>
+              <IconButton>
+                <MenuIcon/>
+              </IconButton>
+              <Typography variant="h6">
+                MUI Themeing
+              </Typography>
+              <Button variant="secondary">
+                Login
+              </Button>
+            </Toolbar>
+          </AppBar>
+          <Typography variant="h2" component="div">
+            Welcome to MUI
+          </Typography>
+          <Typography variant="subtitle1">
+            Learn how to use Material Ui
+          </Typography>
+          <ButtonStyled>Test Styled Button</ButtonStyled>
+
+          <Grid container spacing={2} justifyContent="center">
+            <Grid item xs={3} sm={6}>
+              <Paper style={{height: 75, width: '100%'}}/>
+            </Grid>
+            <Grid item xs={3} sm={6}>
+              <Paper style={{height: 75, width: '100%'}}/>
+            </Grid>
+            <Grid item xs={3} lg={12}>
+              <Paper style={{height: 75, width: '100%'}}/>
+            </Grid>
+          </Grid>
+
           <TextField
             variant="outlined"
             color="secondary"
@@ -96,6 +144,7 @@ function App() {
 
         </header>
       </div>
+      </Container>
     </ThemeProvider>
   );
 }
